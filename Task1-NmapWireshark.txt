@@ -40,7 +40,7 @@ To scan my local network using Nmap, identify live hosts, check port states (ope
 6. Opened Wireshark and selected the active interface (eth0).
    - Started packet capture
    - Ran Nmap scan again
-   - Stopped and saved capture (.pcapng file)
+   - Stopped and saved capture
 
 -----------------------------------------------------
 3. Nmap Results (Summary)
@@ -85,4 +85,5 @@ This practical task helped me understand:
 - How packet-level behavior appears in Wireshark during a network scan
 - How to save and document results for reporting
 
-All related files (scan results, screenshots, pcap) are included in this repository.
+
+
