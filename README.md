@@ -11,4 +11,4 @@ Performed a TCP SYN scan on local network (192.168.69.0/24) using Nmap and captu
 
 ## Files
 - scan_results.txt  
-- Task1-NmapWireshark.txt
+- Task1-NmapWireshark.txt 
