@@ -1,0 +1,88 @@
+Task 1 – Local Network Scan using Nmap and Wireshark
+-----------------------------------------------------
+
+Objective:
+To scan my local network using Nmap, identify live hosts, check port states (open/closed/filtered), and analyze packet behavior using Wireshark.
+
+-----------------------------------------------------
+1. Environment Setup
+-----------------------------------------------------
+- Operating System: Kali Linux (VirtualBox)
+- Network Mode: Bridged Adapter (to get LAN IP)
+- Tools Used:
+  - Nmap
+  - Wireshark
+- My IPv4 Address: 192.168.69.xxx (last digit hidden for privacy)
+- Network Range Scanned: 192.168.69.0/24
+
+-----------------------------------------------------
+2. Steps Performed
+-----------------------------------------------------
+1. Checked system IP address:
+   Command:
+   ip a
+
+2. Identified network range:
+   192.168.69.0/24
+
+3. Found live hosts using Nmap Ping Scan:
+   Command:
+   nmap -sn 192.168.69.0/24
+
+4. Performed TCP SYN Scan (main scan for this task):
+   Command:
+   sudo nmap -sS 192.168.69.0/24
+
+5. Saved scan results:
+   Command:
+   sudo nmap -sS 192.168.69.0/24 > scan_results.txt
+
+6. Opened Wireshark and selected the active interface (eth0).
+   - Started packet capture
+   - Ran Nmap scan again
+   - Stopped and saved capture (.pcapng file)
+
+-----------------------------------------------------
+3. Nmap Results (Summary)
+-----------------------------------------------------
+Host 1: 192.168.69.xxx (My Kali VM)
+- Status: Host up
+- Result: All 1000 scanned ports are CLOSED
+- Meaning: No services running on default ports; all ports sent RST responses.
+
+Host 2: 192.168.69.xxx (Another device on network)
+- Status: Host up
+- Result: All 1000 scanned ports are FILTERED
+- Meaning: Firewall is blocking all responses; no information about services.
+
+MAC vendor for Host 2:
+Chongqing Fugui Electronics (commonly used in Xiaomi/Redmi/IoT devices)
+
+-----------------------------------------------------
+4. Wireshark Observations
+-----------------------------------------------------
+- During the Nmap TCP SYN scan, multiple SYN packets were sent from my machine to different ports on the target.
+- Filtered ports: No response packets captured (silent drop).
+- Closed ports: RST packets captured, meaning the port is not open.
+- Packet behavior confirms the Nmap results accurately.
+
+-----------------------------------------------------
+5. Final Findings
+-----------------------------------------------------
+- Total hosts found: 2
+- Open ports detected: 0
+- Host 192.168.69.xxx → All ports closed
+- Host 192.168.69.xxx → All ports filtered
+- No vulnerable or exposed services found in this network scan.
+
+-----------------------------------------------------
+6. Conclusion
+-----------------------------------------------------
+This practical task helped me understand:
+- How Nmap discovers hosts and checks port states
+- How SYN scan works as a half-open scan
+- Differences between open, closed, and filtered ports
+- How packet-level behavior appears in Wireshark during a network scan
+- How to save and document results for reporting
+
+All related files (scan results, screenshots, pcap) are included in this repository.
